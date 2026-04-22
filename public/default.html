@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Cruce: OULA KEAL</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+		<meta name="description" content="No hai să dăm o cruce dară"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="/default.css" />
+	</head>
+	<body>
+		<div id="loading" class="row">
+			<div id="loading-tromfi"></div>
+			<div class="progress">
+				  <div id="loading-progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+		</div>
+		<div id="error" class="alert alert-danger">
+		    An error occured. <button class="btn btn-primary" onClick="window.location.reload();">Reload</button> or <button class="btn btn-danger" id="ignore-error">Ignore</button>
+		</div>
+		<div class="toggle-top" id="volume-toggle"><svg class="bi bi-volume-up-fill" width="30px" height="30px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>  <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707z"/><path fill-rule="evenodd" d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/></svg></div>
+		<div class="toggle-top" id='fullscreen-toggle'><svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-arrows-fullscreen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">  <path fill-rule="evenodd" d="M1.464 10.536a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3.5a.5.5 0 0 1-.5-.5v-3.5a.5.5 0 0 1 .5-.5z"/>  <path fill-rule="evenodd" d="M5.964 10a.5.5 0 0 1 0 .707l-4.146 4.147a.5.5 0 0 1-.707-.708L5.257 10a.5.5 0 0 1 .707 0zm8.854-8.854a.5.5 0 0 1 0 .708L10.672 6a.5.5 0 0 1-.708-.707l4.147-4.147a.5.5 0 0 1 .707 0z"/>  <path fill-rule="evenodd" d="M10.5 1.5A.5.5 0 0 1 11 1h3.5a.5.5 0 0 1 .5.5V5a.5.5 0 0 1-1 0V2h-3a.5.5 0 0 1-.5-.5zm4 9a.5.5 0 0 0-.5.5v3h-3a.5.5 0 0 0 0 1h3.5a.5.5 0 0 0 .5-.5V11a.5.5 0 0 0-.5-.5z"/>  <path fill-rule="evenodd" d="M10 9.964a.5.5 0 0 0 0 .708l4.146 4.146a.5.5 0 0 0 .708-.707l-4.147-4.147a.5.5 0 0 0-.707 0zM1.182 1.146a.5.5 0 0 0 0 .708L5.328 6a.5.5 0 0 0 .708-.707L1.889 1.146a.5.5 0 0 0-.707 0z"/>  <path fill-rule="evenodd" d="M5.5 1.5A.5.5 0 0 0 5 1H1.5a.5.5 0 0 0-.5.5V5a.5.5 0 0 0 1 0V2h3a.5.5 0 0 0 .5-.5z"/></svg></div>
+
+		<div id="page-login" class="container-xl h-100">
+			
+			<div class="row justify-content-center">
+				<p><img id="cruce-logo" src="img/logo.png" alt="Logo"/></p>
+			</div>
+
+			<form id="login-form" class="row" action="#">
+				<input class="form-control form-control-lg border-0 rounded-0" id='username' placeholder='Cum îţi zice?'></input>
+			</form>
+
+			<div class="alters_grid row justify-content-center">
+				<div data-alter="basescu" class="alter-basescu alter_choice"></div>
+				<div data-alter="boris" class="alter-boris alter_choice"></div>
+				<div data-alter="chereches" class="alter-chereches alter_choice"></div>
+				<div data-alter="cumpanasu" class="alter-cumpanasu alter_choice"></div>
+				<div data-alter="dannegru" class="alter-dannegru alter_choice"></div>
+				<div data-alter="dragnea" class="alter-dragnea alter_choice"></div>
+				<div data-alter="ellen" class="alter-ellen alter_choice"></div>
+				<div data-alter="esca" class="alter-esca alter_choice"></div>
+				<div data-alter="firea" class="alter-firea alter_choice"></div>
+				<div data-alter="fullmana" class="alter-fullmana alter_choice"></div>
+				<div data-alter="funar" class="alter-funar alter_choice"></div>
+				<div data-alter="gadea" class="alter-gadea alter_choice"></div>
+				<div data-alter="gigi" class="alter-gigi alter_choice"></div>
+				<div data-alter="guta" class="alter-guta alter_choice"></div>
+				<div data-alter="hagi" class="alter-hagi alter_choice"></div>
+				<div data-alter="iliescu" class="alter-iliescu alter_choice"></div>
+				<div data-alter="kim" class="alter-kim alter_choice"></div>
+				<div data-alter="lizzie" class="alter-lizzie alter_choice"></div>
+				<div data-alter="marica" class="alter-marica alter_choice"></div>
+				<div data-alter="merkel" class="alter-merkel alter_choice"></div>
+				<div data-alter="mocanu" class="alter-mocanu alter_choice"></div>
+				<div data-alter="nelson" class="alter-nelson alter_choice"></div>
+				<div data-alter="obama" class="alter-obama alter_choice"></div>
+				<div data-alter="ohanes" class="alter-ohanes alter_choice"></div>
+				<div data-alter="olguta" class="alter-olguta alter_choice"></div>
+				<div data-alter="oprah" class="alter-oprah alter_choice"></div>
+				<div data-alter="papa" class="alter-papa alter_choice"></div>
+				<div data-alter="perversaocna" class="alter-perversaocna alter_choice"></div>
+				<div data-alter="proasta" class="alter-proasta alter_choice"></div>
+				<div data-alter="putin" class="alter-putin alter_choice"></div>
+				<div data-alter="salam" class="alter-salam alter_choice"></div>
+				<div data-alter="theresa" class="alter-theresa alter_choice"></div>
+				<div data-alter="tribunul" class="alter-tribunul alter_choice"></div>
+				<div data-alter="trump" class="alter-trump alter_choice"></div>
+				<div data-alter="zucc" class="alter-zucc alter_choice"></div>
+				<div data-alter="albert" class="alter-albert alter_choice"></div>
+			</div>
+			<br/>
+		</div>
+
+		<div id="page-lobby" class="container-xl h-100">
+			<div class="row justify-content-center p-lg">
+				<h1><img src="img/logow.png" alt="Cruce: AI DE OULA KEAL!"/></h1>
+			</div>
+
+			<div class="row" id='gamesList'></div>
+		</div>
+
+		<div id="game-end" class="w-100 h-100 position-fixed text-center">
+		  <div class="row h-100 w-50 mx-auto justify-content-center align-items-center text-center">
+		    <form class="col-12">
+			      <div id="winners"></div>
+			      <div id="losers"></div>
+		      </div>
+		    </form>   
+		  </div>  
+		</div>
+
+		<div id="page-game" oncontextmenu="return false" class="container-fluid noselect h-100 position-relative">
+			<div id="game-board-holder" class="position-absolute">
+				<div id='game-board' class="not-playing position-relative mx-auto">
+
+
+					<div id="seat-white" class="seat position-absolute">
+						<div class="d-inline-block alter text-center align-middle"><div id="thought-white" class="thought"></div><div id="white-alter"></div><span class="align-middle" id="white-name"></span></div>
+						<div class="d-inline-block align-middle cards" id="player-white-cards">
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+						</div>
+					</div>
+
+					<div id="seat-red" class="seat position-absolute">
+						<div class="d-inline-block align-middle cards" id="player-red-cards">
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+						</div>
+						<div class="d-inline-block alter text-center align-middle"><div id="thought-red" class="thought"></div><div id="red-alter"></div><span class="align-middle" id="red-name"></span></div>
+					</div>
+
+					<div id="seat-black" class="seat position-absolute">
+						<div class="d-inline-block align-middle cards" id="player-black-cards">
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+						</div>
+						<div class="d-inline-block alter text-center align-middle"><div id="thought-black" class="thought"></div><div id="black-alter"></div><span class="align-middle" id="black-name"></span></div>
+					</div>
+
+					<div id="seat-blue" class="seat position-absolute">
+						<div class="d-inline-block alter text-center align-middle"><div id="thought-blue" class="thought"></div><div id="blue-alter"></div><span class="align-middle" id="blue-name"></span></div>
+						<div class="d-inline-block align-middle cards" id="player-blue-cards">
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+							<div class="playing-card-holder"></div>
+						</div>
+					</div>
+
+					<div id="score" class="position-absolute">
+						<div id="score_name_whites"></div>
+						<div id="small_whites"></div><div id="big_whites"></div>
+						<div class="clearfix"></div>
+						<div id="score_name_colors"></div>
+						<div id="small_colors"></div><div id="big_colors"></div>
+						<div class="clearfix"></div><br/>
+						<div id="score_tromf"></div>
+						<div id="score_td"></div>
+						<div id="score_bid"></div>
+					</div>
+
+					<div id="cards-shuffle" class="position-absolute">
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+						<div class="playing-card-holder"><div class="playing-card d-inline-block position-relative"><div class="front"><img src="img/0.png" alt="front"/></div><div class="back"><img src="img/0.png" alt="back"/></div></div></div>
+					</div>
+
+					<div id="cards-collected-white" class="position-absolute"><div class="playing-card-holder"></div></div>
+					<div id="cards-collected-colors" class="position-absolute"><div class="playing-card-holder"></div></div>
+
+					<div id="game-river-white" class="game-river position-absolute"><div class="playing-card-holder"></div></div>
+					<div id="game-river-red" class="game-river position-absolute"><div class="playing-card-holder"></div></div>
+					<div id="game-river-black" class="game-river position-absolute"><div class="playing-card-holder"></div></div>
+					<div id="game-river-blue" class="game-river position-absolute"><div class="playing-card-holder"></div></div>
+
+					<div class="game-overlay" id="bidding">
+						<h2>C&#226;te zici c&#259; faci?</h2>
+						<div class="licitez pointer" data-bid="0"><img src="img/0.png"/></div>
+						<div class="licitez pointer" data-bid="1"><img src="img/1.png"/></div>
+						<div class="licitez pointer" data-bid="2"><img src="img/2.png"/></div>
+						<div class="licitez pointer" data-bid="3"><img src="img/3.png"/></div>
+						<div class="licitez pointer" data-bid="4"><img src="img/4.png"/></div>
+					</div>
+
+					<div class="game-overlay" id="tromfing">
+						<h2>Care s&#259; fie tromfu?</h2>
+						<img alt="Roşu" src="img/r.png" class="pointer aleg-tromf" data-tromf="r"/>
+						<img alt="Ghindă" src="img/g.png" class="pointer aleg-tromf" data-tromf="g"/>
+						<img alt="Dubă" src="img/d.png" class="pointer aleg-tromf" data-tromf="d"/>
+						<img alt="Verde" src="img/v.png" class="pointer aleg-tromf" data-tromf="v"/>
+						<h2>Te sim&#355;i bul&#259;nos?</h2>
+						<img alt="Prima" src="img/1.png" class="pointer aleg-tromf" data-tromf="1"/>
+						<img alt="A doua" src="img/2.png" class="pointer aleg-tromf" data-tromf="2"/>
+						<img alt="A treia" src="img/3.png" class="pointer aleg-tromf" data-tromf="3"/>
+					</div>
+
+				</div>
+			</div>
+
+			<div oncontextmenu="return false;" class="row justify-content-center position-relative" id="my-controls">
+
+				<div id="tura-dubla" class="pointer"><img src="img/x2.png"/></div>
+
+				<div class="pointer" id="cermaleste">
+					<img src="img/deck.png" alt="Shuffle"/>
+				</div>
+
+				<div id="my-cards">
+				</div>
+
+			</div>
+
+			<div id="game-chatroom">
+				<div id='messages'></div>
+				<form class="row" id="saysth" action="#">
+					  <div class="col-8"><input class="form-control w-100" type="text" maxlength="100" autocomplete="off" id="say"/></div>
+					  <div class="col-4"><input type="submit" class="btn btn-success m-0 w-100" value=">"/></div>
+				</form>
+			</div>
+
+			<div class="toggle-top" id='exit-room'><svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-door-open-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2v13h1V2.5a.5.5 0 0 0-.5-.5H11zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/> </svg></div>
+			<div class="toggle-top" id="chat-toggle"><svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-chat-text-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">		  <path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM4.5 5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zm0 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>		</svg></div>
+			<div class="toggle-top" id="eye-toggle"><svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+			  <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+			</svg></div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+		<script src="/default.js"></script>
+
+	</body>
+</html>

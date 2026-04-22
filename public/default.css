@@ -1,0 +1,995 @@
+@font-face {
+font-family: 'Mike Sans Free Regular';
+font-style: normal;
+font-weight: normal;
+src: local('Mike Sans Free Regular'), url('img/MikeSansFree.woff') format('woff');
+}
+
+html {
+    min-width: 100%;
+    min-height: 100%;
+    height: 100%;
+}
+
+body {
+    overflow-y: auto;
+    overflow-x: hidden; 
+    background-color: #000;
+    background-size:cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+#loading {
+  width: 100%;
+  height: 100vh;
+  display: block;
+  text-align: center;
+  padding-top: 50px;
+}
+
+#loading .progress {
+    max-width: 50%;
+    margin: 25px auto;
+}
+
+#loading-tromfi {
+    display: block;
+    text-align: center;
+    height: auto;
+    min-height: 15vw;
+}
+
+#loading-tromfi img {
+    margin: 15px;
+    max-width: 15%;
+}
+
+.f-0 {
+    font-size: 0;
+}
+
+#cruce-logo {
+    box-shadow: 2px 2px 4px rgba(25,25,25,0.5);
+    border-radius: 5%;
+    margin-top: 35px;
+}
+
+#username {
+    color: #eee;
+    background-color: rgba(200,200,200, 0.2);
+    margin: 30px 0 25px 0;
+}
+
+#username::placeholder {
+    color: #ccc;
+}
+
+#page-login, #page-lobby {
+    display: none;
+    background-color: rgba(50,50,50,0.5);
+}
+
+#page-game {
+    display: none;
+    perspective-origin: top;
+    perspective: 1500px;
+    padding: 0;
+    margin: 0;
+}
+
+#game-board-holder {
+    width: 100%;
+    perspective: 1500px;perspective-origin: top;
+    display: block;
+}
+
+#game-board {
+    position: relative;
+    width: 1500px;
+    height: 800px;
+    background-image: url('img/lamasa.png');
+    background-repeat: repeat;
+    border-radius: 5px;
+    box-shadow: 20px 5px 10px rgba(0,0,0, 0.5);
+    padding: 20px;
+    transition: 1s;
+    transform-origin: top left;
+    text-align: center;
+}
+
+/*#game-board.cards_on_display .seat {
+    width: 750px;
+    transition: 0.5s;
+}
+
+#game-board.cards_on_display .playing-card-holder {
+    margin-left: -75px;
+    transition: 0.5s;
+}
+
+.seat, .playing-card-holder {
+    transition: width 0.5s margin-left 0.5s;
+}*/
+
+.seat .cards {
+    min-height: 253px;
+}
+
+.game-started {
+
+}
+
+.card_forbidden {
+    pointer-events: none !important;
+}
+
+.card_forbidden img {
+    filter: grayscale(80%);
+}
+
+.alter-bot {
+    background: url('img/mo.png') !important;
+}
+
+.alter-basescu {
+    background: url('img/alters.png') -0 -0 !important;
+}
+
+.alter-boris {
+    background: url('img/alters.png') -100px -0 !important;
+}
+
+.alter-chereches {
+    background: url('img/alters.png') -0 -100px !important;
+}
+
+.alter-cumpanasu {
+    background: url('img/alters.png') -100px -100px !important;
+}
+
+.alter-dannegru {
+    background: url('img/alters.png') -200px -0 !important;
+}
+
+.alter-dragnea {
+    background: url('img/alters.png') -200px -100px !important;
+}
+
+.alter-ellen {
+    background: url('img/alters.png') -0 -200px !important;
+}
+
+.alter-esca {
+    background: url('img/alters.png') -100px -200px !important;
+}
+
+.alter-firea {
+    background: url('img/alters.png') -200px -200px !important;
+}
+
+.alter-fullmana {
+    background: url('img/alters.png') -300px -0 !important;
+}
+
+.alter-funar {
+    background: url('img/alters.png') -300px -100px !important;
+}
+
+.alter-gadea {
+    background: url('img/alters.png') -300px -200px !important;
+}
+
+.alter-gigi {
+    background: url('img/alters.png') -0 -300px !important;
+}
+
+.alter-guta {
+    background: url('img/alters.png') -100px -300px !important;
+}
+
+.alter-hagi {
+    background: url('img/alters.png') -200px -300px !important;
+}
+
+.alter-iliescu {
+    background: url('img/alters.png') -300px -300px !important;
+}
+
+.alter-kim {
+    background: url('img/alters.png') -400px -0 !important;
+}
+
+.alter-lizzie {
+    background: url('img/alters.png') -400px -100px !important;
+}
+
+.alter-marica {
+    background: url('img/alters.png') -400px -200px !important;
+}
+
+.alter-merkel {
+    background: url('img/alters.png') -400px -300px !important;
+}
+
+.alter-mocanu {
+    background: url('img/alters.png') -0 -400px !important;
+}
+
+.alter-nelson {
+    background: url('img/alters.png') -100px -400px !important;
+}
+
+.alter-obama {
+    background: url('img/alters.png') -200px -400px !important;
+}
+
+.alter-ohanes {
+    background: url('img/alters.png') -300px -400px !important;
+}
+
+.alter-olguta {
+    background: url('img/alters.png') -400px -400px !important;
+}
+
+.alter-oprah {
+    background: url('img/alters.png') -500px -0 !important;
+}
+
+.alter-papa {
+    background: url('img/alters.png') -500px -100px !important;
+}
+
+.alter-perversaocna {
+    background: url('img/alters.png') -500px -200px !important;
+}
+
+.alter-proasta {
+    background: url('img/alters.png') -500px -300px !important;
+}
+
+.alter-putin {
+    background: url('img/alters.png') -500px -400px !important;
+}
+
+.alter-salam {
+    background: url('img/alters.png') -0 -500px !important;
+}
+
+.alter-theresa {
+    background: url('img/alters.png') -100px -500px !important;
+}
+
+.alter-tribunul {
+    background: url('img/alters.png') -200px -500px !important;
+}
+
+.alter-trump {
+    background: url('img/alters.png') -300px -500px !important;
+}
+
+.alter-zucc {
+    background: url('img/alters.png') -400px -500px !important;
+}
+
+.alter-albert {
+    background: url('img/alters.png') -500px -500px !important;
+}
+
+.alter_choice {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 10px;
+    transition: 0.5s;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    box-shadow: 2px 2px 4px rgba(25,25,25,0.5);
+    width: 100px; 
+    height: 100px;
+}
+
+.alter_choice:hover {
+    transform: rotateX(15deg) rotateY(15deg);
+}
+
+.alter_choice:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));    
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+}
+
+.alter-set {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    box-sizing: content-box;
+    border: 3px solid rgba(155,170,150,0.85);
+    transition: border 0.5s;
+}
+
+.turning .alter-set {
+    border: 3px solid rgba(35,170,50,0.85);
+}
+
+.alter {
+    color: #eee;
+    z-index: 4;
+}
+
+.toggle-top {
+   position: fixed;
+    left: 10px;
+    padding: 10px;
+    background-color: rgba(50,50,50,0.5);
+    border-radius: 50%;
+    color: #FFF;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#volume-toggle {
+    top: 10px;
+}
+
+#exit-room {
+    top: 250px;
+}
+
+#eye-toggle {
+    top: 190px;
+}
+
+#fullscreen-toggle {
+    top: 70px;
+}
+
+#chat-toggle {
+    top: 130px;
+}
+
+.p-lg {
+    padding: 35px 0;
+}
+
+#newgame {
+    background-image: url('img/newgame.png');
+}
+
+.game-card {
+    width: 250px;
+    height: 125px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(25,25,25,0.5);
+    border:0;
+    cursor: pointer;
+    background-image: url('img/bere.png');
+    margin: 10px;
+    padding: 15px 10px;
+    font-size: 2em;
+    text-align: center;
+    font-family: 'Mike Sans Free Regular', cursive;
+    font-weight: 700;
+    color: #fff;
+    white-space: pre-wrap
+}
+
+#seat-black .thought, #seat-red .thought {
+    right: 0;
+}
+
+#seat-white .thought, #seat-blue .thought {
+    left: 0;
+}
+
+#seat-white .thought, #seat-red .thought {
+    top: 150px;
+}
+
+#seat-black .thought, #seat-blue .thought {
+    bottom: 150px;
+}
+
+#white-name, #red-name, #black-name #blue-name {
+    padding: 5px;
+    transition: 0.5s;
+    border-bottom: 1px transparent;
+}
+
+.highest_bidder {
+    border-bottom: 1px solid white !important;
+}
+
+.highest_bidder.tromf_g {
+    border-bottom: 1px solid #fff70d !important;
+}
+
+.highest_bidder.tromf_d {
+    border-bottom: 1px solid #828923 !important;
+}
+
+.highest_bidder.tromf_r {
+    border-bottom: 1px solid #c8181d !important;
+}
+
+.highest_bidder.tromf_v {
+    border-bottom: 1px solid #2e8f14 !important;
+}
+
+.thought {
+  display:block;
+  background-color:rgba(244,244,244,0.9);
+  padding:20px;
+  border-radius:30px;
+  max-width: 330px;
+  margin:20px;
+  position:absolute;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color: #333;
+  opacity: 1;
+  transition: 0.33s;
+  z-index: 1500;
+  font-size: 1.5em;
+}
+
+.thought img {
+    max-height: 200px;
+    width: auto;
+}
+
+.thought:empty {
+    opacity: 0;
+    padding: 0;
+}
+
+.thought:before,
+.thought:after {
+  content:"";
+  background-color:#fff;
+  border-radius:50%;
+  display:block;
+  position:absolute;
+  z-index:-1;
+}
+.thought:before {
+  width:44px;
+  height:44px;
+  top:-12px;
+  left:28px;
+  box-shadow:-50px 30px 0 -12px #fff;
+}
+
+.not-playing .seat.not-taken {
+    cursor: pointer;
+}
+
+.seat.not-taken {
+    background-image: url('img/chair.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: scale(1.25);
+    transition: opacity 0.5s;
+}
+
+.cards-gone .seat.not-taken {
+    opacity: 0;
+}
+
+.cards-gone .playing-card-holder {
+    opacity: 0;
+}
+
+.not-taken#seat-red, .not-taken#seat-black {
+    transform: scale(1.25) scaleX(-1);
+}
+
+.thought:empty:after {
+    opacity: 0;
+}
+
+#seat-blue .thought:after {
+  bottom:-10px;
+  left:26px;
+  width:30px;
+  height:30px;
+  box-shadow:40px -34px 0 0 #fff,
+             -28px -6px 0 -2px #fff,
+             -24px 17px 0 -6px #fff,
+             -5px 25px 0 -10px #fff;
+  
+}
+
+#seat-white .thought:after {
+  top:-10px;
+  left:26px;
+  width:30px;
+  height:30px;
+  box-shadow:40px -34px 0 0 #fff,
+             -28px 6px 0 -2px #fff,
+             -24px -17px 0 -6px #fff,
+             -5px -25px 0 -10px #fff;
+  
+}
+
+#seat-black .thought:after {
+  bottom:-10px;
+  right:26px;
+  width:30px;
+  height:30px;
+  box-shadow:40px -34px 0 0 #fff,
+             -28px -6px 0 -2px #fff,
+             -24px 17px 0 -6px #fff,
+             -5px 25px 0 -10px #fff;
+  
+}
+
+#seat-red .thought:after {
+  top:-10px;
+  right:26px;
+  width:30px;
+  height:30px;
+  box-shadow:40px -34px 0 0 #fff,
+             -28px 6px 0 -2px #fff,
+             -24px -17px 0 -6px #fff,
+             -5px -25px 0 -10px #fff;
+  
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+#tromfing {
+    padding: 50px 0;
+    top: 100px;
+}
+
+#tromfing img {
+    margin: 5px 15px;
+    max-height: 250px;
+}
+
+#cermaleste, #bidding, #tromfing {
+    display: none;
+}
+
+#bidding > div, #tromfing > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#cermaleste > img {
+    transform: translatey(0px);
+    animation: float 2s ease-in-out infinite;
+}
+
+#cards-shuffle {
+    width: 100%;
+    top: 275px;
+    z-index: 10;
+}
+
+#cards-shuffle > div {
+    margin-left: -125px;
+    display: inline-block;
+    position: relative;
+    z-index: 10 !important;
+}
+
+#game-river > div {
+    margin-left: 75px;
+}
+
+#game-river {
+    top: 275px;
+    left: 260px;
+}
+
+.flippin {
+    width: 148px;
+    height: 250px;
+}
+
+.playing-card-holder {
+    width: 150px;
+    margin-left: -125px;
+    display: inline-block;
+}
+
+.playing-card .front {
+    position: absolute;
+}
+
+.playing-card .back {
+    position: relative;
+}
+
+.playing-card .front, .playing-card .back {
+    height: 100%;
+    width: 100%;
+    -webkit-perspective: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    visibility:visible;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.seat {
+    font-size: 1rem;
+    width: 750px;
+    height: 275px;
+    padding: 10px 0;
+}
+
+#my-controls {
+    opacity: 0.75;
+    transition: 0.5s;
+    min-height: 200px;
+    width: 100%;
+    margin: 0;
+}
+
+#my-controls.my-turn {
+    opacity: 1;
+}
+
+#my-controls * {
+    max-height: inherit;
+}
+
+#seat-blue {
+    bottom: 0;
+    left: 0;
+    text-align: left;
+}
+#seat-white {
+    top: 0;
+    left: 0;
+    text-align: left;
+}
+#seat-red {
+    top: 0;
+    right: 0;
+    text-align: right;
+}
+#seat-black {
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
+
+#cards-shuffle, .cards {
+    font-size: 0;
+    padding-left: 125px;
+}
+
+#tura-dubla {
+    display: none;
+}
+
+.playable-card {
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+    top: 0;
+    transition: 1s;
+}
+
+.my-turn .playable-card:hover {
+    top: -20px;
+}
+
+.my-turn .playable-card, .my-turn .licitez {
+    cursor: pointer;
+}
+
+#cards-collected-white {
+    width: 150px;
+    height: 265px;
+    top: 0;
+    left: 550px;
+}
+
+#cards-collected-colors {
+    width: 150px;
+    height: 265px;
+    bottom: 0;
+    left: 550px;
+}
+
+#cards-collected-white .playing-card, #cards-collected-colors .playing-card {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+}
+
+#game-river-white {
+    top: 170px;
+    left: 580px;
+}
+#game-river-red {
+    top: 190px;
+    right: 580px;
+}
+#game-river-black {
+    bottom: 200px;
+    right: 500px;
+}
+#game-river-blue {
+    bottom: 180px;
+    left: 580px;
+}
+
+.seat .playing-card-holder > div {
+    z-index: 10 !important;
+}
+
+#game-chatroom {
+    background-color: rgba(240,240,240,0.9);
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #666;
+    box-shadow: 2px 2px 4px rgba(25,25,25,0.5);
+    border-radius: 8px;
+    z-index: 50000;
+    cursor: move;
+    position: absolute;
+    float: right;
+    right: 10px;
+    top: 10px;
+    opacity: 0.4;
+    touch-action: none;
+}
+
+#game-chatroom.maxi #messages {
+    opacity: 1;
+    height: 300px;
+    padding: 15px;
+    touch-action: none;
+}
+
+#messages {
+    word-break: break-word;
+    overflow-y: auto;
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#messages div span {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+#messages div {
+    position: relative;
+    margin: 5px 0 20px 0;
+}
+
+#messages p {
+    margin-bottom: 0em;
+    padding: 15px 20px;
+    border-radius: 30px;
+    background-color: rgba(190,190,190,0.8);
+    color: #222;
+    display: block;
+    max-width: 70%;
+    float: left;
+}
+
+#messages p.msg-fullwidth {
+    max-width: 100%;
+}
+
+#messages div.my-message p {
+    float: right;
+    background-color: rgba(172,104,133,0.8);
+    color: #eee;
+}
+
+#messages img {
+    display: inline-block;
+    margin: 5px 2px;
+    max-width:63px;
+}
+
+#score {
+    font-family: 'Indie Flower', cursive;
+    background-image: url('img/score.png');
+    width: 252px;
+    height: 330px;
+    top: 240px;
+    right: 0;
+    padding: 25px 10px 10px 40px;
+    line-height: 1.25;
+    color: #16264c;
+    transform: translateY(-200vh);
+    transition: 1s ease-in-out;
+    font-size: 1.75em;
+    z-index: 5;
+}
+
+.game-started #score {
+    transform: translateY(0);
+}
+
+#small_whites, #small_colors {
+    padding: 0 20px;
+    float: left;
+}
+
+#big_whites, #big_colors {
+    padding: 0 20px;
+    float: right;
+}
+
+#score_tromf {
+    max-width: 80px;
+    bottom: 20px;
+    position: absolute;
+    left: 80px;
+    opacity: 0.85;
+}
+
+#score_td {
+    position: absolute;
+    bottom: 37px;
+    right: 45px;
+    color: #ac3235;
+}
+
+#score_bid {
+    position: absolute;
+    bottom: 38px;
+    left: 58px;
+}
+
+#cafea {
+    left: 48px;
+    top: 300px;
+    width: 150px;
+    height: 139px;
+    opacity: 0.8;
+    transform: rotate3d(0, 40deg, -20deg);
+    -webkit-perspective: 10000px;
+    perspective: 10000px;
+}
+
+#tigari {
+    left: 154px;
+    top: 415px;
+    width: 175px;
+    height: 94px;
+    transform: rotate3d(0, 25deg, -10deg);
+    opacity: 0.8;
+    -webkit-perspective: 10000px;
+    perspective: 10000px;
+}
+
+.game-overlay {
+    display: block;
+    text-align: center;
+    z-index: 3000;
+    position: absolute;
+    top: 140px;
+    padding: 100px;
+    background-color: rgba(20, 20, 20, 0.9);
+    color: white;
+    left: 60px;
+    box-shadow: 2px 2px 4px rgba(20, 20, 20, 0.5);
+    border-radius: 10px;
+    width: 1375px;
+}
+
+.game-overlay > div {
+    margin: 0 25px;
+    width: 185px;
+}
+
+#error {
+    display: none;
+    width: 90%;
+    left: 5%;
+    padding: 25px;
+    margin: 50px auto;
+    position: fixed;
+    z-index: 5000;
+}
+
+#game-end {
+    left: 0;
+    top: 0;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 3s ease infinite;
+    z-index: 10000;
+    opacity: 0.75;
+    display: none;
+}
+
+#winners, #losers {
+    text-align: center;
+    font-family: 'Mike Sans Free Regular', cursive;
+    color: white;
+}
+
+.special-text {
+    font-family: 'Mike Sans Free Regular', cursive;
+    font-size: 1.2em
+    padding: 10px 20px;
+}
+
+#winners {
+    font-size: 3.5em;
+}
+
+#losers {
+    font-size: 2em;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.my-game .not-me:hover {
+    cursor: pointer;
+    background: url('img/kick.png') !important;
+}
