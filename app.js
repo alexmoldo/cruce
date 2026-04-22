@@ -2,8 +2,9 @@ var express = require('express');
 var app = express();
 app.use(express.static('public'));
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var port = process.env.PORT || 80;
+const { Server } = require("socket.io");
+const io = new Server(http);
+var port = process.env.PORT || 3000;
 
 var cards = [
     {c: 'r', v: 0, o: null},
